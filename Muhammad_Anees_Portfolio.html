@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Anees — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1420;
+    --surface: #161F2E;
+    --surface-2: #1D2839;
+    --border: #2A3648;
+    --text: #E7EDF6;
+    --text-muted: #8FA0B8;
+    --accent: #5FD9C7;
+    --accent-dim: #2E4A45;
+    --amber: #E8A94C;
+    --amber-dim: #4A3A21;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before{
+    content:"";
+    position: fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(95,217,199,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(95,217,199,0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap{ max-width: 860px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* ---------- HERO ---------- */
+  header.hero{ padding: 96px 0 64px; }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--accent-dim);
+  }
+  .token-name{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .token{
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: clamp(28px, 6vw, 52px);
+    padding: 4px 14px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: tokenIn 0.5s ease forwards;
+    line-height: 1.15;
+  }
+  .token.t1{ background: var(--accent-dim); color: var(--accent); animation-delay: 0.05s; }
+  .token.t2{ background: var(--amber-dim); color: var(--amber); animation-delay: 0.2s; }
+  .token.t3{ background: var(--surface-2); color: var(--text); animation-delay: 0.35s; border: 1px solid var(--border); }
+  @keyframes tokenIn{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .role-line{
+    font-size: 19px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    max-width: 560px;
+  }
+  .role-line b{ color: var(--text); font-weight: 600; }
+
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .pill:hover{ border-color: var(--accent); transform: translateY(-1px); }
+  .pill svg{ width: 14px; height: 14px; opacity: .8; flex-shrink:0; }
+
+  /* ---------- SECTION LABEL ---------- */
+  .sec{ padding: 52px 0; border-top: 1px solid var(--border); }
+  .sec-label{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-label::after{
+    content:"";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---------- SUMMARY ---------- */
+  .summary-text{ font-size: 16.5px; color: var(--text-muted); max-width: 680px; }
+  .summary-text b{ color: var(--text); font-weight: 500; }
+
+  /* ---------- SKILLS ---------- */
+  .skill-group{ margin-bottom: 20px; }
+  .skill-group:last-child{ margin-bottom: 0; }
+  .skill-group-label{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .tag-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 5px 11px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 26px 24px;
+    margin-bottom: 18px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .project:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .project-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .project-title{
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .project-status{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .project-desc{
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+  .project-stack{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .stack-tag{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--amber);
+    background: var(--amber-dim);
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+  .project-links{ display: flex; gap: 10px; flex-wrap: wrap; }
+  .link-btn{
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity .18s ease;
+  }
+  .link-btn:hover{ opacity: .82; }
+  .link-btn.primary{ background: var(--accent); color: #0E1420; font-weight: 600; }
+  .link-btn.secondary{ background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .link-btn svg{ width: 13px; height: 13px; }
+
+  /* ---------- EXPERIENCE / EDU ---------- */
+  .entry{ margin-bottom: 22px; }
+  .entry:last-child{ margin-bottom: 0; }
+  .entry-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 6px;
+  }
+  .entry-title{ font-weight: 600; font-size: 16px; color: var(--text); }
+  .entry-org{ color: var(--text-muted); font-weight: 400; }
+  .entry-date{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+  .entry-desc{ color: var(--text-muted); font-size: 14.5px; }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .achieve-list{ list-style: none; }
+  .achieve-list li{
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14.5px;
+    color: var(--text-muted);
+  }
+  .achieve-list li:last-child{ border-bottom: none; }
+  .achieve-list b{ color: var(--text); font-weight: 500; }
+  .achieve-list span.dot{
+    font-family: var(--mono);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 44px 0 64px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer .foot-line{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  footer .foot-line b{ color: var(--accent); }
+
+  @media (max-width: 600px){
+    header.hero{ padding: 64px 0 44px; }
+    .sec{ padding: 40px 0; }
+    .project-top{ flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .token{ animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">tokenizer.encode("candidate") → open to AI/ML Engineer Intern roles</div>
+    <div class="token-name">
+      <span class="token t1">Muhammad</span><span class="token t2">Anees</span>
+    </div>
+    <p class="role-line"><b>AI/ML Engineer</b> — NLP · Deep Learning · Python. B.S. Computer Science graduate building end-to-end AI applications, from classical ML to LLM-based tools.</p>
+    <div class="contact-row">
+      <a class="pill" href="mailto:m.anees2633@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 4 8 8 8-8"/></svg>
+        m.anees2633@gmail.com
+      </a>
+      <a class="pill" href="tel:+923078560964">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.99.36 1.96.68 2.89a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.19-1.27a2 2 0 0 1 2.11-.45c.93.32 1.9.55 2.89.68A2 2 0 0 1 22 16.92z"/></svg>
+        +92 307 856 0964
+      </a>
+      <a class="pill" href="https://github.com/Anees2633" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
+        github.com/Anees2633
+      </a>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="sec-label">01 — Summary</div>
+    <p class="summary-text">AI/ML Engineer with hands-on experience building and deploying <b>end-to-end AI applications</b> in NLP and Deep Learning. Proficient in Python, TensorFlow, PyTorch, and Streamlit. Holds a <b>Microsoft Azure AI Fundamentals (AI-900)</b> certification and completed an intensive 3-month AI program at Corvit Systems (PSEB). Passionate about designing scalable, real-world AI systems and continuously advancing expertise in generative AI and LLM-based applications.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">02 — Skills</div>
+    <div class="skill-group">
+      <div class="skill-group-label">Languages</div>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">C++</span><span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">AI / ML</div>
+      <div class="tag-row">
+        <span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">LLM APIs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Libraries</div>
+      <div class="tag-row">
+        <span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">PyTorch</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Tools</div>
+      <div class="tag-row">
+        <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Streamlit</span><span class="tag">Hugging Face</span><span class="tag">Jupyter Notebook</span><span class="tag">Google Colab</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Web</div>
+      <div class="tag-row">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">03 — Projects</div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">Sentiment Analysis Web App</div>
+        <div class="project-status">● live demo</div>
+      </div>
+      <p class="project-desc">GRU/LSTM-based text classification model with sequence padding and preprocessing. Deployed as a real-time web app showing predictions with confidence scores.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">TensorFlow/Keras</span><span class="stack-tag">GRU/LSTM</span><span class="stack-tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a class="link-btn primary" href="https://anees3131-sentiment-analysis-app.hf.space/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          Try live demo
+        </a>
+        <a class="link-btn secondary" href="https://github.com/Anees2633/sentiment-analysis-app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">Spam Email Detection System</div>
+        <div class="project-status">● live demo</div>
+      </div>
+      <p class="project-desc">Naive Bayes spam classifier using TF-IDF vectorization, tokenization, and stopword removal on a real SMS dataset. Achieved high accuracy and deployed as an interactive Streamlit web app.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">NLP</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a class="link-btn primary" href="https://spam-detection-anees.streamlit.app/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+          Try live demo
+        </a>
+        <a class="link-btn secondary" href="https://github.com/Anees2633/spam-detection" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">AI Chatbot — Gemini API</div>
+        <div class="project-status">● source available</div>
+      </div>
+      <p class="project-desc">Integrated Google Gemini API to build a real-time AI chatbot with prompt engineering for contextual replies and a polished Streamlit chat interface for seamless user interaction.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Gemini API</span><span class="stack-tag">Prompt Engineering</span><span class="stack-tag">Streamlit</span>
+      </div>
+      <div class="project-links">
+        <a class="link-btn secondary" href="https://github.com/Anees2633/llm-chatbot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">04 — Experience</div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">AI/Coding Trainer <span class="entry-org">— IcodeGuru</span></div>
+        <div class="entry-date">Jun 2024 – Present</div>
+      </div>
+      <p class="entry-desc">Delivering coding and AI training sessions to students.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">05 — Education & Certifications</div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">B.S. Computer Science <span class="entry-org">— University of Agriculture, Faisalabad</span></div>
+        <div class="entry-date">2021 – 2025</div>
+      </div>
+      <p class="entry-desc">Coursework: AI, DSA, OOP, NLP, Digital Image Processing, Big Data Analytics, Cloud Computing & IoT</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Microsoft Certified: Azure AI Fundamentals (AI-900)</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Artificial Intelligence (3-month) <span class="entry-org">— Corvit Systems, Lahore (PSEB)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-label">06 — Competitions & Leadership</div>
+    <ul class="achieve-list">
+      <li><span class="dot">→</span><span><b>Advent of Code</b> — Completed all 25 days of algorithmic challenges</span></li>
+      <li><span class="dot">→</span><span><b>Meta Hacker Cup</b> — International competitive programming contest</span></li>
+      <li><span class="dot">→</span><span><b>Calico by UC Berkeley</b> — Solved 4/10 problems, scored 580/1000 in a 3-hour international contest</span></li>
+      <li><span class="dot">→</span><span><b>Cabinet President, TGM</b> — University of Agriculture Faisalabad (Sep 2022 – Sep 2023). Led 70 students, organized co-curricular activities to build soft skills and student engagement.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p class="foot-line">Built by <b>Muhammad Anees</b> — thanks for reading this far. Reach out any time.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
